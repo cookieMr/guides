@@ -86,10 +86,10 @@ Code quality is a good idea if you'd like to avoid some bugs before they arrive 
 * Go back to SonarCloud _Analyze project_ page. Choose newly added project and click on _Set Up_ blue button.
 
 ![Set Up project in SonarCloud](12_set_up_project_in_sonarcloud.png "Set Up project in SonarCloud")
-* On the next page choose a CI/CD machinery you are already using to automaticaly build and run roject's tests. Choose _With CircleCI_ option.
+* On the next page choose a CI/CD machinery you are already using to automaticaly build and run project's tests. Choose _With CircleCI_ option.
 
 ![Choose a build machinery](13_sonarcloud_choose_a_build_machinery.png "Choose a build machinery")
-* You will be presented with a two step setup for CircleCI where you need to add a `SONAR_TOKEN` you your CircleCI environment. Go into CircleCI organization settings your project belogs to.
+* You will be presented with a two step setup for CircleCI where you need to add a `SONAR_TOKEN` to your CircleCI environment. Go into CircleCI organization settings your project belogs to.
 
 ![Create a CircleCI Context](14_create_circle_ci_context.png "Create a CircleCI Context")
 * Find you project there, click on config icon (wheel icon) to go into project's settings page.
@@ -103,10 +103,14 @@ Code quality is a good idea if you'd like to avoid some bugs before they arrive 
 * Go back to SonarCloud two step instructions and choose your build tool (for me it's Maven).
 
 ![2nd Step of SonarCloud Setting](19_sonarcloud_2nd_step_instruction.png "2nd Step of SonarCloud Setting")
-* Add to your `pom.xml` file three `<properties>` that are specified with your user name, your project name and the SOnarCloud webpage address.
+* Add to your `pom.xml` file three `<properties>` that are specified with your user name, your project name and the SonarCloud webpage address.
 * Add to you `.circleci/config.yml` just one additional line right after you integration tests (create a Pull Request in GitHub). For more details see _Example YAML config file with Sonar Analyzing command_ section below.
 ```yaml
       - run: mvn verify sonar:sonar
+```
+Or in case of gradle:
+```yaml
+      - run: gradle build sonarqube
 ```
 * You should see a Sonar Report for that new branch (Pull Request) and you should receive an email from both CircleCI and SonarCloud with results.
 * Each commit into a Pull Request will start CircleCI, which will send metrics to SonarCloud, which in turn will analyze your code.
