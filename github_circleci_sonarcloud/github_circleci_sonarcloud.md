@@ -89,7 +89,7 @@ Code quality is a good idea if you'd like to avoid some bugs before they arrive 
 * On the next page choose a CI/CD machinery you are already using to automaticaly build and run project's tests. Choose _With CircleCI_ option.
 
 ![Choose a build machinery](13_sonarcloud_choose_a_build_machinery.png "Choose a build machinery")
-* You will be presented with a two step setup for CircleCI where you need to add a `SONAR_TOKEN` to yours CircleCI environment. Go into CircleCI organization settings your project belogs to.
+* You will be presented with a two step setup for CircleCI where you need to add a `SONAR_TOKEN` to your CircleCI environment. Go into CircleCI organization settings your project belogs to.
 
 ![Create a CircleCI Context](14_create_circle_ci_context.png "Create a CircleCI Context")
 * Find you project there, click on config icon (wheel icon) to go into project's settings page.
@@ -108,7 +108,7 @@ Code quality is a good idea if you'd like to avoid some bugs before they arrive 
 ```yaml
       - run: mvn verify sonar:sonar
 ```
-or in case of gradle:
+Or in case of gradle:
 ```yaml
       - run: gradle build sonarqube
 ```
